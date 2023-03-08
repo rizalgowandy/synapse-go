@@ -6,9 +6,10 @@
 
 ![logo](https://socialify.git.ci/rizalgowandy/synapse-go/image?description=1&descriptionEditable=Interact%20with%20Synapse%20API.&logo=https%3A%2F%2Fpbs.twimg.com%2Fprofile_images%2F1560077835607281665%2FGvk6wzyA_400x400.png&owner=1&pattern=Signal&theme=Light)
 
-## Getting Started
+[//]: # (## Getting Started)
 
-// TODO: replace me
+[//]: # ()
+[//]: # (// TODO: replace me)
 
 ## Installation
 
