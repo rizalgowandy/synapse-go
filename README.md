@@ -16,17 +16,38 @@
 go get -v github.com/rizalgowandy/synapse-go
 ```
 
-## Quick Start
+[//]: # (## Quick Start)
 
-```go
-// TODO: replace me
-```
+[//]: # ()
+[//]: # (```go)
 
-For more example check [here](main_integration_test.go).
+[//]: # (// TODO: replace me)
+
+[//]: # (```)
+
+[//]: # (For more example check [here]&#40;main_integration_test.go&#41;.)
+
+[//]: # (## Test Double / Stub)
+
+[//]: # ()
+[//]: # (Sometimes it's make sense to make an API call without actually calling the API. In order to support that this library has a built-in stub that can be triggered. You can enable stub by injecting certain value to the context data. You can also enforce that certain API call will always return error with specific type and)
+
+[//]: # (message.)
+
+[//]: # ()
+[//]: # (```go)
+
+[//]: # (// TODO: replace me)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (For more example, check [here]&#40;&#41;.)
 
 ## Supported API
 
 Version: 2023-03-08
 
-- [// TODO: replace me]()
-   - [// TODO: replace me]()
+- [OAuth](https://docs.synapsefi.com/api-references/oauth)
+   - [Create OAuth Key](https://docs.synapsefi.com/api-references/oauth/oauth-via-refresh-token)
+   - [Generate Refresh Token](https://docs.synapsefi.com/api-references/oauth/generate-refresh-token)
