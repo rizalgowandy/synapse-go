@@ -7,10 +7,11 @@ import (
 
 // Config is the necessary configuration to call API.
 type Config struct {
+	ID string
 	// Key is the authentication API key.
-	// Most requests to the XYZ API must be authenticated with an API key.
-	// You can create an API key in your Settings page after creating a XYZ account.
-	// Reference: TODO: replace
+	// Most requests to the Synapse API must be authenticated with an API key.
+	// You can create an API key in your Settings page after creating a Synapse account.
+	// Reference: https://docs.synapsefi.com/intro-to-apis
 	Key string
 	// Timeout describes total waiting time before a request is treated as timeout.
 	// Optional.
@@ -34,13 +35,16 @@ type Config struct {
 	// HostURL describes the host url target.
 	// HostURL can be filled with your fake server host url for testing purpose.
 	// Optional.
-	// Default: TODO: replace
+	// Default: https://api.synapsefi.com
 	HostURL string
 }
 
 // Validate validates configuration correctness and
 // fill fields with default configuration if left empty.
 func (c *Config) Validate() error {
+	if c.ID == "" {
+		return errors.New("config: invalid id")
+	}
 	if c.Key == "" {
 		return errors.New("config: invalid key")
 	}
@@ -54,7 +58,7 @@ func (c *Config) Validate() error {
 		c.RetryMaxWaitTime = 2 * time.Second
 	}
 	if c.HostURL == "" {
-		c.HostURL = "" // TODO: replace
+		c.HostURL = "https://api.synapsefi.com"
 	}
 	return nil
 }

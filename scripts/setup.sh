@@ -11,7 +11,7 @@ command -v mockgen 2>/dev/null || GO111MODULE=off go get -v github.com/golang/mo
 echo ""
 
 echo -e "\e[32mInstalling:\e[33m golangci-lint for linter.\e[0m"
-command -v golangci-lint 2>/dev/null || curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b "$(go env GOPATH)"/bin v1.33.0
+command -v golangci-lint 2>/dev/null || curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b "$(go env GOPATH)"/bin v1.51.1
 echo ""
 
 echo -e "\e[32mInstalling:\e[33m gomodifytags for generating tags.\e[0m"

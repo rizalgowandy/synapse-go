@@ -1,12 +1,10 @@
-// TODO: replace me
-package library
+package synapse
 
 import (
-	"github.com/rizalgowandy/library-template-go/pkg/api"
+	"github.com/rizalgowandy/synapse-go/pkg/api"
 )
 
-// TODO: replace me
-// NewClient creates a client to interact with XYZ API.
+// NewClient creates a client to interact with Synapse API.
 func NewClient(cfg api.Config) (*Client, error) {
 	if err := cfg.Validate(); err != nil {
 		return nil, err
@@ -15,7 +13,6 @@ func NewClient(cfg api.Config) (*Client, error) {
 	return &Client{}, nil
 }
 
-// TODO: replace me
-// Client is the main client to interact with XYZ API.
+// Client is the main client to interact with Synapse API.
 type Client struct {
 }
