@@ -6,6 +6,33 @@ import (
 	"github.com/rizalgowandy/synapse-go/pkg/entity"
 )
 
+func (c *Client) CreateUser(ctx context.Context, req *entity.CreateUserReq) (*entity.CreateUserResp, error) {
+	url := "/v3.1/users"
+
+	var (
+		content    entity.CreateUserResp
+		contentErr entity.ErrResp
+	)
+
+	_, err := c.client.R().
+		SetContext(ctx).
+		SetHeaders(c.UserIPHeader(req.UserIPAddress)).
+		SetHeaders(c.UserHeader("", req.UserID)).
+		SetHeader("Content-Type", "application/json").
+		SetResult(&content).
+		SetError(&contentErr).
+		Post(url)
+	if err != nil {
+		return nil, err
+	}
+
+	if contentErr.Valid() {
+		return nil, contentErr
+	}
+
+	return &content, nil
+}
+
 func (c *Client) UpdateUser(ctx context.Context, req *entity.UpdateUserReq) (*entity.UpdateUserResp, error) {
 	url := "/v3.1/users/{user_id}"
 
