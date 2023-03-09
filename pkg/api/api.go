@@ -24,6 +24,7 @@ type OAuthClientItf interface {
 
 type UsersClientItf interface {
 	GetDuplicates(ctx context.Context, req *entity.GetDuplicatesReq) (*entity.GetDuplicatesResp, error)
+	SwapDuplicateUsers(ctx context.Context, req *entity.SwapDuplicateUsersReq) (*entity.SwapDuplicateUsersResp, error)
 	AllowedDocumentTypes(ctx context.Context) (*entity.AllowedDocumentTypesResp, error)
 	AllowedEntityScopes(ctx context.Context) (*entity.AllowedEntityScopesResp, error)
 	AllowedEntityTypes(ctx context.Context) (*entity.AllowedEntityTypesResp, error)

@@ -14,6 +14,19 @@ type GetDuplicatesResp struct {
 	UserID        string   `json:"user_id"`
 }
 
+type SwapDuplicateUsersReq struct {
+	UserID        string `json:"-"`
+	UserIPAddress string `json:"-"`
+	UserOAuthKey  string `json:"-"`
+	SwapToUserID  string `json:"swap_to_user_id"`
+}
+
+type SwapDuplicateUsersResp struct {
+	UserSwapped string `json:"user_swapped"`
+	UserID      string `json:"user_id"`
+	SwappedTo   string `json:"swapped_to"`
+}
+
 type AllowedDocumentTypesResp struct {
 	PhysicalDocs []struct {
 		AllowedFileTypes []string `json:"allowed_file_types"`

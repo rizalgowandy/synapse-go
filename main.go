@@ -35,6 +35,14 @@ func (c *Client) GenerateRefreshToken(ctx context.Context, req *entity.GenerateR
 	return c.caller.GenerateRefreshToken(ctx, req)
 }
 
+func (c *Client) GetDuplicates(ctx context.Context, req *entity.GetDuplicatesReq) (*entity.GetDuplicatesResp, error) {
+	return c.caller.GetDuplicates(ctx, req)
+}
+
+func (c *Client) SwapDuplicateUsers(ctx context.Context, req *entity.SwapDuplicateUsersReq) (*entity.SwapDuplicateUsersResp, error) {
+	return c.caller.SwapDuplicateUsers(ctx, req)
+}
+
 func (c *Client) AllowedDocumentTypes(ctx context.Context) (*entity.AllowedDocumentTypesResp, error) {
 	return c.caller.AllowedDocumentTypes(ctx)
 }
