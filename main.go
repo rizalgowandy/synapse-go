@@ -35,6 +35,10 @@ func (c *Client) GenerateRefreshToken(ctx context.Context, req *entity.GenerateR
 	return c.caller.GenerateRefreshToken(ctx, req)
 }
 
+func (c *Client) ViewUser(ctx context.Context, req *entity.ViewUserReq) (*entity.ViewUserResp, error) {
+	return c.caller.ViewUser(ctx, req)
+}
+
 func (c *Client) CreateUser(ctx context.Context, req *entity.CreateUserReq) (*entity.CreateUserResp, error) {
 	return c.caller.CreateUser(ctx, req)
 }

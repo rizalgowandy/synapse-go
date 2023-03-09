@@ -196,3 +196,46 @@ func TestClient_AllowedEntityTypes_Integration(t *testing.T) {
 		})
 	}
 }
+
+func TestClient_ViewUser_Integration(t *testing.T) {
+	if !integration {
+		return
+	}
+
+	type args struct {
+		ctx context.Context
+		req *entity.ViewUserReq
+	}
+	tests := []struct {
+		name    string
+		args    args
+		wantErr bool
+	}{
+		{
+			name: "Success",
+			args: args{
+				ctx: context.Background(),
+				req: &entity.ViewUserReq{
+					UserID:        "5fd7acfd8677040053ad486d",
+					UserIPAddress: "255.127.79.76",
+					FullDehydrate: "yes",
+				},
+			},
+			wantErr: false,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			c := client
+			got, err := c.ViewUser(tt.args.ctx, tt.args.req)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("ViewUser() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			L.Describe(got, err)
+			if !tt.wantErr {
+				assert.NotNil(t, got)
+			}
+		})
+	}
+}

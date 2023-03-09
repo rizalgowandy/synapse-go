@@ -6,6 +6,34 @@ import (
 	"github.com/rizalgowandy/synapse-go/pkg/entity"
 )
 
+func (c *Client) ViewUser(ctx context.Context, req *entity.ViewUserReq) (*entity.ViewUserResp, error) {
+	url := "/v3.1/users/{user_id}?full_dehydrate={full_dehydrate}"
+
+	var (
+		content    entity.ViewUserResp
+		contentErr entity.ErrResp
+	)
+
+	_, err := c.client.R().
+		SetContext(ctx).
+		SetPathParam("user_id", req.UserID).
+		SetPathParam("full_dehydrate", req.FullDehydrate).
+		SetHeaders(c.UserIPHeader(req.UserIPAddress)).
+		SetHeaders(c.UserHeader("", req.UserID)).
+		SetResult(&content).
+		SetError(&contentErr).
+		Get(url)
+	if err != nil {
+		return nil, err
+	}
+
+	if contentErr.Valid() {
+		return nil, contentErr
+	}
+
+	return &content, nil
+}
+
 func (c *Client) CreateUser(ctx context.Context, req *entity.CreateUserReq) (*entity.CreateUserResp, error) {
 	url := "/v3.1/users"
 
