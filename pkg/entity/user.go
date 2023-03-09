@@ -10,3 +10,7 @@ type AllowedEntityTypesResp struct {
 		Type       string `json:"type"`
 	} `json:"PERSONAL"`
 }
+
+type AllowedEntityScopesResp struct {
+	Scopes []string `json:"scopes"`
+}
