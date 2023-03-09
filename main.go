@@ -34,3 +34,7 @@ func (c *Client) CreateOAuthKey(ctx context.Context, req *entity.CreateOAuthKeyR
 func (c *Client) GenerateRefreshToken(ctx context.Context, req *entity.GenerateRefreshTokenReq) (*entity.GenerateRefreshTokenResp, error) {
 	return c.caller.GenerateRefreshToken(ctx, req)
 }
+
+func (c *Client) AllowedEntityTypes(ctx context.Context) (*entity.AllowedEntityTypesResp, error) {
+	return c.caller.AllowedEntityTypes(ctx)
+}

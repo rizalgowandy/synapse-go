@@ -9,11 +9,14 @@ type ErrResp struct {
 	} `json:"error"`
 	ErrorCode string `json:"error_code"`
 	HTTPCode  string `json:"http_code"`
-	Success   bool   `json:"success"`
+	Success   *bool  `json:"success,omitempty"`
 }
 
 func (e ErrResp) Valid() bool {
-	return !e.Success
+	if e.Success == nil {
+		return false
+	}
+	return !*e.Success
 }
 
 func (e ErrResp) Error() string {
