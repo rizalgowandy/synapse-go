@@ -6,6 +6,34 @@ import (
 	"github.com/rizalgowandy/synapse-go/pkg/entity"
 )
 
+func (c *Client) GenerateUBODoc(ctx context.Context, req *entity.GenerateUBODocReq) (*entity.GenerateUBODocResp, error) {
+	url := "/v3.1/users/{user_id}/ubo"
+
+	var (
+		content    entity.GenerateUBODocResp
+		contentErr entity.ErrResp
+	)
+
+	_, err := c.client.R().
+		SetContext(ctx).
+		SetPathParam("user_id", req.UserID).
+		SetHeaders(c.UserIPHeader(req.UserIPAddress)).
+		SetHeaders(c.UserHeader(req.UserOAuthKey, req.UserID)).
+		SetHeader("Content-Type", "application/json").
+		SetResult(&content).
+		SetError(&contentErr).
+		Patch(url)
+	if err != nil {
+		return nil, err
+	}
+
+	if contentErr.Valid() {
+		return nil, contentErr
+	}
+
+	return &content, nil
+}
+
 func (c *Client) GetDuplicates(ctx context.Context, req *entity.GetDuplicatesReq) (*entity.GetDuplicatesResp, error) {
 	url := "/v3.1/users/{user_id}/get-duplicates"
 

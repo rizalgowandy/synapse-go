@@ -35,6 +35,10 @@ func (c *Client) GenerateRefreshToken(ctx context.Context, req *entity.GenerateR
 	return c.caller.GenerateRefreshToken(ctx, req)
 }
 
+func (c *Client) GenerateUBODoc(ctx context.Context, req *entity.GenerateUBODocReq) (*entity.GenerateUBODocResp, error) {
+	return c.caller.GenerateUBODoc(ctx, req)
+}
+
 func (c *Client) GetDuplicates(ctx context.Context, req *entity.GetDuplicatesReq) (*entity.GetDuplicatesResp, error) {
 	return c.caller.GetDuplicates(ctx, req)
 }

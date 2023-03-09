@@ -23,6 +23,7 @@ type OAuthClientItf interface {
 }
 
 type UsersClientItf interface {
+	GenerateUBODoc(ctx context.Context, req *entity.GenerateUBODocReq) (*entity.GenerateUBODocResp, error)
 	GetDuplicates(ctx context.Context, req *entity.GetDuplicatesReq) (*entity.GetDuplicatesResp, error)
 	SwapDuplicateUsers(ctx context.Context, req *entity.SwapDuplicateUsersReq) (*entity.SwapDuplicateUsersResp, error)
 	AllowedDocumentTypes(ctx context.Context) (*entity.AllowedDocumentTypesResp, error)
