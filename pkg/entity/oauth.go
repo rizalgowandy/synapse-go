@@ -5,8 +5,8 @@ import "github.com/rizalgowandy/synapse-go/pkg/enum"
 type CreateOAuthKeyReq struct {
 	UserID        string       `json:"-"`
 	UserIPAddress string       `json:"-"`
-	ValidationPin string       `json:"validation_pin"`
-	PhoneNumber   string       `json:"phone_number"`
+	ValidationPin string       `json:"validation_pin,omitempty"`
+	PhoneNumber   string       `json:"phone_number,omitempty"`
 	Scope         []enum.Scope `json:"scope"`
 	RefreshToken  string       `json:"refresh_token"`
 }

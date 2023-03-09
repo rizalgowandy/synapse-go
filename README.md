@@ -9,6 +9,7 @@
 [//]: # (## Getting Started)
 
 [//]: # ()
+
 [//]: # (// TODO: replace me)
 
 ## Installation
@@ -17,25 +18,60 @@
 go get -v github.com/rizalgowandy/synapse-go
 ```
 
-[//]: # (## Quick Start)
+## Quick Start
 
-[//]: # ()
-[//]: # (```go)
+```go
+package main
 
-[//]: # (// TODO: replace me)
+import (
+	"context"
+	"log"
 
-[//]: # (```)
+	"github.com/rizalgowandy/synapse-go"
+	"github.com/rizalgowandy/synapse-go/pkg/api"
+	"github.com/rizalgowandy/synapse-go/pkg/entity"
+	"github.com/rizalgowandy/synapse-go/pkg/enum"
+)
 
-[//]: # (For more example check [here]&#40;main_integration_test.go&#41;.)
+func main() {
+	client, err := synapse.NewClient(&api.Config{
+		ID:               "REPLACE_WITH_YOUR_API_CLIENT_ID",
+		Key:              "REPLACE_WITH_YOUR_API_CLIENT_SECRET",
+		Timeout:          0,    // Default: 1 min.
+		RetryCount:       0,    // Default: 0 = disable.
+		RetryMaxWaitTime: 0,    // Default: 2 secs.
+		Debug:            true, // Turn on development for easier debugging.
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Generate refresh token.
+	resp, err := client.GenerateRefreshToken(context.Background(), &entity.GenerateRefreshTokenReq{
+		UserID:        "REPLACE_WITH_USER_ID",
+		UserIPAddress: "REPLACE_WITH_USER_IP_ADDRESS",
+		Email:         "REPLACE_WITH_USER_EMAIL",
+		Password:      "REPLACE_WITH_USER_PASSWORD",
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Printf("%+v", resp)
+}
+```
+
+For more example check [here](main_integration_test.go).
 
 [//]: # (## Test Double / Stub)
 
 [//]: # ()
+
 [//]: # (Sometimes it's make sense to make an API call without actually calling the API. In order to support that this library has a built-in stub that can be triggered. You can enable stub by injecting certain value to the context data. You can also enforce that certain API call will always return error with specific type and)
 
 [//]: # (message.)
 
 [//]: # ()
+
 [//]: # (```go)
 
 [//]: # (// TODO: replace me)
@@ -43,6 +79,7 @@ go get -v github.com/rizalgowandy/synapse-go
 [//]: # (```)
 
 [//]: # ()
+
 [//]: # (For more example, check [here]&#40;&#41;.)
 
 ## Supported API
