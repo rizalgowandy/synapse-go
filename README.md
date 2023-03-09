@@ -47,12 +47,15 @@ func main() {
 	}
 
 	// Generate refresh token.
-	resp, err := client.GenerateRefreshToken(context.Background(), &entity.GenerateRefreshTokenReq{
-		UserID:        "REPLACE_WITH_USER_ID",
-		UserIPAddress: "REPLACE_WITH_USER_IP_ADDRESS",
-		Email:         "REPLACE_WITH_USER_EMAIL",
-		Password:      "REPLACE_WITH_USER_PASSWORD",
-	})
+	resp, err := client.GenerateRefreshToken(
+		context.Background(),
+		&entity.GenerateRefreshTokenReq{
+			UserID:        "REPLACE_WITH_USER_ID",
+			UserIPAddress: "REPLACE_WITH_USER_IP_ADDRESS",
+			Email:         "REPLACE_WITH_USER_EMAIL",
+			Password:      "REPLACE_WITH_USER_PASSWORD",
+		},
+	)
 	if err != nil {
 		log.Fatal(err)
 	}
