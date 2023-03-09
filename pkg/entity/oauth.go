@@ -16,7 +16,7 @@ type CreateOAuthKeyResp struct {
 	ClientName       string            `json:"client_name"`
 	ExpiresAt        string            `json:"expires_at"`
 	ExpiresIn        string            `json:"expires_in"`
-	OauthKey         string            `json:"oauth_key"`
+	OAuthKey         string            `json:"oauth_key"`
 	RefreshExpiresIn int               `json:"refresh_expires_in"`
 	RefreshToken     string            `json:"refresh_token"`
 	Scope            []enum.OAuthScope `json:"scope"`

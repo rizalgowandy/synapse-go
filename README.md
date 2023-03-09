@@ -97,6 +97,8 @@ Version: 2023-03-08
   - [Update User](https://docs.synapsefi.com/api-references/users/update-user)
   - [Generate OBO Doc](https://docs.synapsefi.com/api-references/users/generate-ubo-doc)
   - [Manage Duplicates](https://docs.synapsefi.com/api-references/users/manage-duplicates)
+    - Get Duplicates
+    - Swap Duplicate Users
   - [Allowed Document Types](https://docs.synapsefi.com/api-references/users/allowed-document-types)
   - [Allowed Entity Scopes](https://docs.synapsefi.com/api-references/users/allowed-entity-scopes)
   - [Allow Entity Types](https://docs.synapsefi.com/api-references/users/allowed-entity-types)

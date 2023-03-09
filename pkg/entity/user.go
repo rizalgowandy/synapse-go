@@ -1,18 +1,17 @@
 package entity
 
-type AllowedEntityTypesResp struct {
-	Business []struct {
-		CommonName string `json:"common_name"`
-		Type       string `json:"type"`
-	} `json:"BUSINESS"`
-	Personal []struct {
-		CommonName string `json:"common_name"`
-		Type       string `json:"type"`
-	} `json:"PERSONAL"`
+type GetDuplicatesReq struct {
+	UserID        string `json:"-"`
+	UserIPAddress string `json:"-"`
+	UserOAuthKey  string `json:"-"`
 }
 
-type AllowedEntityScopesResp struct {
-	Scopes []string `json:"scopes"`
+type GetDuplicatesResp struct {
+	ClosedUsersID []string `json:"closed_users_id"`
+	OpenUsersID   []string `json:"open_users_id"`
+	Reason        string   `json:"reason"`
+	Status        string   `json:"status"`
+	UserID        string   `json:"user_id"`
 }
 
 type AllowedDocumentTypesResp struct {
@@ -41,4 +40,19 @@ type AllowedDocumentTypesResp struct {
 		RequiredMeta    []any    `json:"required_meta"`
 		Type            string   `json:"type"`
 	} `json:"virtual_docs"`
+}
+
+type AllowedEntityTypesResp struct {
+	Business []struct {
+		CommonName string `json:"common_name"`
+		Type       string `json:"type"`
+	} `json:"BUSINESS"`
+	Personal []struct {
+		CommonName string `json:"common_name"`
+		Type       string `json:"type"`
+	} `json:"PERSONAL"`
+}
+
+type AllowedEntityScopesResp struct {
+	Scopes []string `json:"scopes"`
 }
