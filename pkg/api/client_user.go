@@ -6,6 +6,30 @@ import (
 	"github.com/rizalgowandy/synapse-go/pkg/entity"
 )
 
+func (c *Client) AllowedDocumentTypes(ctx context.Context) (*entity.AllowedDocumentTypesResp, error) {
+	url := "/v3.1/users/document-types"
+
+	var (
+		content    entity.AllowedDocumentTypesResp
+		contentErr entity.ErrResp
+	)
+
+	_, err := c.client.R().
+		SetContext(ctx).
+		SetResult(&content).
+		SetError(&contentErr).
+		Get(url)
+	if err != nil {
+		return nil, err
+	}
+
+	if contentErr.Valid() {
+		return nil, contentErr
+	}
+
+	return &content, nil
+}
+
 func (c *Client) AllowedEntityScopes(ctx context.Context) (*entity.AllowedEntityScopesResp, error) {
 	url := "/v3.1/users/entity-scopes"
 

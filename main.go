@@ -35,6 +35,10 @@ func (c *Client) GenerateRefreshToken(ctx context.Context, req *entity.GenerateR
 	return c.caller.GenerateRefreshToken(ctx, req)
 }
 
+func (c *Client) AllowedDocumentTypes(ctx context.Context) (*entity.AllowedDocumentTypesResp, error) {
+	return c.caller.AllowedDocumentTypes(ctx)
+}
+
 func (c *Client) AllowedEntityScopes(ctx context.Context) (*entity.AllowedEntityScopesResp, error) {
 	return c.caller.AllowedEntityScopes(ctx)
 }
