@@ -69,3 +69,30 @@ func (c *Client) ViewNode(ctx context.Context, req *entity.ViewNodeReq) (*entity
 
 	return &content, nil
 }
+
+func (c *Client) CreateNode(ctx context.Context, req *entity.CreateNodeReq) (*entity.CreateNodeResp, error) {
+	url := "/v3.1/users/{user_id}/nodes"
+
+	var (
+		content    entity.CreateNodeResp
+		contentErr entity.ErrResp
+	)
+
+	_, err := c.client.R().
+		SetContext(ctx).
+		SetHeaders(c.UserIPHeader(req.UserIPAddress)).
+		SetHeaders(c.UserHeader(req.UserOAuthKey, req.UserID)).
+		SetHeader("Content-Type", "application/json").
+		SetResult(&content).
+		SetError(&contentErr).
+		Post(url)
+	if err != nil {
+		return nil, err
+	}
+
+	if contentErr.Valid() {
+		return nil, contentErr
+	}
+
+	return &content, nil
+}

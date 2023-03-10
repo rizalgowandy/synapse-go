@@ -124,7 +124,7 @@ type ViewNodeResp struct {
 			Currency string `json:"currency"`
 		} `json:"balance"`
 		BankCode     string `json:"bank_code"`
-		BankHlogo    string `json:"bank_hlogo"`
+		BankHLogo    string `json:"bank_hlogo"`
 		BankLogo     string `json:"bank_logo"`
 		BankLongName string `json:"bank_long_name"`
 		BankName     string `json:"bank_name"`
@@ -133,7 +133,7 @@ type ViewNodeResp struct {
 		MatchInfo    struct {
 			EmailMatch       string `json:"email_match"`
 			NameMatch        string `json:"name_match"`
-			PhonenumberMatch string `json:"phonenumber_match"`
+			PhoneNumberMatch string `json:"phonenumber_match"`
 		} `json:"match_info"`
 		NameOnAccount string `json:"name_on_account"`
 		Nickname      string `json:"nickname"`
@@ -147,4 +147,65 @@ type ViewNodeResp struct {
 	} `json:"timeline"`
 	Type   string `json:"type"`
 	UserID string `json:"user_id"`
+}
+
+type CreateNodeReq struct {
+	UserID        string `json:"-"`
+	UserIPAddress string `json:"-"`
+	UserOAuthKey  string `json:"-"`
+	Type          string `json:"type"`
+	Info          struct {
+		Nickname   string `json:"nickname"`
+		DocumentID string `json:"document_id"`
+	} `json:"info"`
+}
+
+type CreateNodeResp struct {
+	ErrorCode string `json:"error_code"`
+	HTTPCode  string `json:"http_code"`
+	Limit     int    `json:"limit"`
+	NodeCount int    `json:"node_count"`
+	Nodes     []struct {
+		ID    string `json:"_id"`
+		Links struct {
+			Self struct {
+				Href string `json:"href"`
+			} `json:"self"`
+		} `json:"_links"`
+		Allowed           string `json:"allowed"`
+		AllowedStatusCode any    `json:"allowed_status_code"`
+		Client            struct {
+			ID   string `json:"id"`
+			Name string `json:"name"`
+		} `json:"client"`
+		Extra struct {
+			Note  any `json:"note"`
+			Other struct {
+			} `json:"other"`
+			SuppID string `json:"supp_id"`
+		} `json:"extra"`
+		Info struct {
+			Agreements []struct {
+				Type string `json:"type"`
+				URL  string `json:"url"`
+			} `json:"agreements"`
+			Balance struct {
+				Amount   float64 `json:"amount"`
+				Currency string  `json:"currency"`
+			} `json:"balance"`
+			BankCode      string `json:"bank_code"`
+			DocumentID    string `json:"document_id"`
+			NameOnAccount string `json:"name_on_account"`
+			Nickname      string `json:"nickname"`
+		} `json:"info"`
+		IsActive bool `json:"is_active"`
+		Timeline []struct {
+			Date int64  `json:"date"`
+			Note string `json:"note"`
+		} `json:"timeline"`
+		Type   string `json:"type"`
+		UserID string `json:"user_id"`
+	} `json:"nodes"`
+	PageCount int  `json:"page_count"`
+	Success   bool `json:"success"`
 }

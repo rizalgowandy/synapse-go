@@ -82,3 +82,7 @@ func (c *Client) ViewAllUserNodes(ctx context.Context, req *entity.ViewAllUserNo
 func (c *Client) ViewNode(ctx context.Context, req *entity.ViewNodeReq) (*entity.ViewNodeResp, error) {
 	return c.caller.ViewNode(ctx, req)
 }
+
+func (c *Client) CreateNode(ctx context.Context, req *entity.CreateNodeReq) (*entity.CreateNodeResp, error) {
+	return c.caller.CreateNode(ctx, req)
+}
