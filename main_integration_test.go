@@ -239,3 +239,47 @@ func TestClient_ViewUser_Integration(t *testing.T) {
 		})
 	}
 }
+
+func TestClient_ViewAllUsers_Integration(t *testing.T) {
+	if !integration {
+		return
+	}
+
+	type args struct {
+		ctx context.Context
+		req *entity.ViewAllUsersReq
+	}
+	tests := []struct {
+		name    string
+		args    args
+		wantErr bool
+	}{
+		{
+			name: "Success",
+			args: args{
+				ctx: context.Background(),
+				req: &entity.ViewAllUsersReq{
+					UserIPAddress:     "255.127.79.76",
+					ShowRefreshTokens: "yes",
+					PerPage:           "10",
+					Page:              "1",
+				},
+			},
+			wantErr: false,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			c := client
+			got, err := c.ViewAllUsers(tt.args.ctx, tt.args.req)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("ViewAllUsers() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			L.Describe(got, err)
+			if !tt.wantErr {
+				assert.NotNil(t, got)
+			}
+		})
+	}
+}

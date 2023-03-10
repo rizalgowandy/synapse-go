@@ -1,5 +1,56 @@
 package entity
 
+type ViewAllUsersReq struct {
+	UserIPAddress     string `json:"-"`
+	ShowRefreshTokens string `json:"-"`
+	PerPage           string `json:"-"`
+	Page              string `json:"-"`
+}
+
+type ViewAllUsersResp struct {
+	ErrorCode string `json:"error_code"`
+	HTTPCode  string `json:"http_code"`
+	Limit     int    `json:"limit"`
+	Page      int    `json:"page"`
+	PageCount int    `json:"page_count"`
+	Success   bool   `json:"success"`
+	Users     []struct {
+		ID    string `json:"_id"`
+		Links struct {
+			Self struct {
+				Href string `json:"href"`
+			} `json:"self"`
+		} `json:"_links"`
+		Client struct {
+			ID   string `json:"id"`
+			Name string `json:"name"`
+		} `json:"client"`
+		Documents []any `json:"documents"`
+		Emails    []any `json:"emails"`
+		Extra     struct {
+			CipTag        int   `json:"cip_tag"`
+			DateJoined    int64 `json:"date_joined"`
+			ExtraSecurity bool  `json:"extra_security"`
+			IsBusiness    bool  `json:"is_business"`
+			IsTrusted     bool  `json:"is_trusted"`
+			LastUpdated   int64 `json:"last_updated"`
+		} `json:"extra"`
+		Flag       string   `json:"flag"`
+		IsHidden   bool     `json:"is_hidden"`
+		LegalNames []string `json:"legal_names"`
+		Logins     []struct {
+			Email string `json:"email"`
+			Scope string `json:"scope"`
+		} `json:"logins"`
+		Permission   string   `json:"permission"`
+		PhoneNumbers []string `json:"phone_numbers"`
+		Photos       []any    `json:"photos"`
+		RefreshToken string   `json:"refresh_token"`
+		Watchlists   string   `json:"watchlists"`
+	} `json:"users"`
+	UsersCount int `json:"users_count"`
+}
+
 type ViewUserReq struct {
 	UserID        string `json:"-"`
 	UserIPAddress string `json:"-"`

@@ -23,6 +23,7 @@ type OAuthClientItf interface {
 }
 
 type UsersClientItf interface {
+	ViewAllUsers(ctx context.Context, req *entity.ViewAllUsersReq) (*entity.ViewAllUsersResp, error)
 	ViewUser(ctx context.Context, req *entity.ViewUserReq) (*entity.ViewUserResp, error)
 	CreateUser(ctx context.Context, req *entity.CreateUserReq) (*entity.CreateUserResp, error)
 	UpdateUser(ctx context.Context, req *entity.UpdateUserReq) (*entity.UpdateUserResp, error)

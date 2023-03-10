@@ -6,6 +6,37 @@ import (
 	"github.com/rizalgowandy/synapse-go/pkg/entity"
 )
 
+func (c *Client) ViewAllUsers(ctx context.Context, req *entity.ViewAllUsersReq) (*entity.ViewAllUsersResp, error) {
+	url := "/v3.1/users?show_refresh_tokens={show_refresh_tokens}&per_page={per_page}&page={page}"
+
+	var (
+		content    entity.ViewAllUsersResp
+		contentErr entity.ErrResp
+	)
+
+	_, err := c.client.R().
+		SetContext(ctx).
+		SetPathParams(map[string]string{
+			"show_refresh_tokens": req.ShowRefreshTokens,
+			"per_page":            req.PerPage,
+			"page":                req.Page,
+		}).
+		SetHeaders(c.UserIPHeader(req.UserIPAddress)).
+		SetHeaders(c.UserHeader("", "")).
+		SetResult(&content).
+		SetError(&contentErr).
+		Get(url)
+	if err != nil {
+		return nil, err
+	}
+
+	if contentErr.Valid() {
+		return nil, contentErr
+	}
+
+	return &content, nil
+}
+
 func (c *Client) ViewUser(ctx context.Context, req *entity.ViewUserReq) (*entity.ViewUserResp, error) {
 	url := "/v3.1/users/{user_id}?full_dehydrate={full_dehydrate}"
 
