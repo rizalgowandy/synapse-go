@@ -98,3 +98,7 @@ func (c *Client) GenerateECashBarcode(ctx context.Context, req *entity.GenerateE
 func (c *Client) AllowedNodeTypes(ctx context.Context) (*entity.AllowedNodeTypesResp, error) {
 	return c.caller.AllowedNodeTypes(ctx)
 }
+
+func (c *Client) ViewATMs(ctx context.Context) (*entity.ViewATMsResp, error) {
+	return c.caller.ViewATMs(ctx)
+}

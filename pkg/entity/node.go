@@ -293,3 +293,39 @@ type AllowedNodeTypesResp struct {
 		Type string `json:"type"`
 	} `json:"types"`
 }
+
+type ViewATMsResp struct {
+	ATMs []struct {
+		ATMLocation struct {
+			DistanceMeters    string `json:"DistanceMeters"`
+			DistanceUnit      string `json:"DistanceUnit"`
+			LocationID        string `json:"LocationID"`
+			LocationName      string `json:"LocationName"`
+			LocationType      string `json:"LocationType"`
+			LocationTypeLabel string `json:"LocationTypeLabel"`
+			MapIcon           string `json:"MapIcon"`
+			MapURL            string `json:"MapUrl"`
+			SurchargeFree     string `json:"SurchargeFree"`
+			Address           struct {
+				City       string `json:"city"`
+				Country    string `json:"country"`
+				PostalCode string `json:"postalCode"`
+				State      string `json:"state"`
+				Street     string `json:"street"`
+			} `json:"address"`
+			Coordinates struct {
+				Latitude  string `json:"latitude"`
+				Longitude string `json:"longitude"`
+			} `json:"coordinates"`
+		} `json:"atmLocation"`
+		ATMNetworkType string  `json:"atm_network_type"`
+		Distance       float64 `json:"distance"`
+	} `json:"atms"`
+	ATMsCount int    `json:"atms_count"`
+	ErrorCode string `json:"error_code"`
+	HTTPCode  string `json:"http_code"`
+	Limit     int    `json:"limit"`
+	Page      int    `json:"page"`
+	PageCount int    `json:"page_count"`
+	Success   bool   `json:"success"`
+}
