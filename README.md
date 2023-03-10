@@ -102,5 +102,14 @@ Version: 2023-03-08
   - [Allowed Document Types](https://docs.synapsefi.com/api-references/users/allowed-document-types)
   - [Allowed Entity Scopes](https://docs.synapsefi.com/api-references/users/allowed-entity-scopes)
   - [Allow Entity Types](https://docs.synapsefi.com/api-references/users/allowed-entity-types)
-- [Nodes]
+- [Nodes](https://docs.synapsefi.com/api-references/nodes)
   - [View All User Nodes](https://docs.synapsefi.com/api-references/nodes/view-all-user-nodes)
+  - [View Node](https://docs.synapsefi.com/api-references/nodes/view-node)
+  - [Create Node](https://docs.synapsefi.com/api-references/nodes/create-node)
+  - [Update Node](https://docs.synapsefi.com/api-references/nodes/update-node)
+  - [Generate ECash Barcode](https://docs.synapsefi.com/api-references/nodes/generate-ecash-barcode)
+  - [Allowed Node Types](https://docs.synapsefi.com/api-references/nodes/allowed-node-types)
+  - [View ATMs](https://docs.synapsefi.com/api-references/nodes/view-atms)
+  - [View Crypto Quotes](https://docs.synapsefi.com/api-references/nodes/view-crypto-quotes)
+
+[//]: # (- []&#40;&#41;)
