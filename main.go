@@ -86,3 +86,7 @@ func (c *Client) ViewNode(ctx context.Context, req *entity.ViewNodeReq) (*entity
 func (c *Client) CreateNode(ctx context.Context, req *entity.CreateNodeReq) (*entity.CreateNodeResp, error) {
 	return c.caller.CreateNode(ctx, req)
 }
+
+func (c *Client) UpdateNode(ctx context.Context, req *entity.UpdateNodeReq) (*entity.UpdateNodeResp, error) {
+	return c.caller.UpdateNode(ctx, req)
+}

@@ -96,3 +96,36 @@ func (c *Client) CreateNode(ctx context.Context, req *entity.CreateNodeReq) (*en
 
 	return &content, nil
 }
+
+func (c *Client) UpdateNode(ctx context.Context, req *entity.UpdateNodeReq) (*entity.UpdateNodeResp, error) {
+	url := "/v3.1/users/{user_id}/nodes/{node_id}?reauth={reauth}&resend_micro={resend_micro}"
+
+	var (
+		content    entity.UpdateNodeResp
+		contentErr entity.ErrResp
+	)
+
+	_, err := c.client.R().
+		SetContext(ctx).
+		SetPathParams(map[string]string{
+			"user_id":      req.UserID,
+			"node_id":      req.NodeID,
+			"reauth":       req.ReAuth,
+			"resend_micro": req.ResendMicro,
+		}).
+		SetHeaders(c.UserIPHeader(req.UserIPAddress)).
+		SetHeaders(c.UserHeader(req.UserOAuthKey, req.UserID)).
+		SetHeader("Content-Type", "application/json").
+		SetResult(&content).
+		SetError(&contentErr).
+		Patch(url)
+	if err != nil {
+		return nil, err
+	}
+
+	if contentErr.Valid() {
+		return nil, contentErr
+	}
+
+	return &content, nil
+}
