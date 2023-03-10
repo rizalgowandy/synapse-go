@@ -43,6 +43,7 @@ type NodesClientItf interface {
 	GenerateECashBarcode(ctx context.Context, req *entity.GenerateECashBarcodeReq) (*entity.GenerateECashBarcodeResp, error)
 	AllowedNodeTypes(ctx context.Context) (*entity.AllowedNodeTypesResp, error)
 	ViewATMs(ctx context.Context) (*entity.ViewATMsResp, error)
+	ViewCryptoQuotes(ctx context.Context) (*entity.ViewCryptoQuotesResp, error)
 }
 
 type SubnetsClientItf interface {

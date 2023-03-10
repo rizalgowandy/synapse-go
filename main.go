@@ -102,3 +102,7 @@ func (c *Client) AllowedNodeTypes(ctx context.Context) (*entity.AllowedNodeTypes
 func (c *Client) ViewATMs(ctx context.Context) (*entity.ViewATMsResp, error) {
 	return c.caller.ViewATMs(ctx)
 }
+
+func (c *Client) ViewCryptoQuotes(ctx context.Context) (*entity.ViewCryptoQuotesResp, error) {
+	return c.caller.ViewCryptoQuotes(ctx)
+}

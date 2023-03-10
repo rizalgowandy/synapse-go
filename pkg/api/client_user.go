@@ -302,3 +302,27 @@ func (c *Client) ViewATMs(ctx context.Context) (*entity.ViewATMsResp, error) {
 
 	return &content, nil
 }
+
+func (c *Client) ViewCryptoQuotes(ctx context.Context) (*entity.ViewCryptoQuotesResp, error) {
+	url := "/v3.1/nodes/crypto-quotes"
+
+	var (
+		content    entity.ViewCryptoQuotesResp
+		contentErr entity.ErrResp
+	)
+
+	_, err := c.client.R().
+		SetContext(ctx).
+		SetResult(&content).
+		SetError(&contentErr).
+		Get(url)
+	if err != nil {
+		return nil, err
+	}
+
+	if contentErr.Valid() {
+		return nil, contentErr
+	}
+
+	return &content, nil
+}
