@@ -102,5 +102,5 @@ Version: 2023-03-08
   - [Allowed Document Types](https://docs.synapsefi.com/api-references/users/allowed-document-types)
   - [Allowed Entity Scopes](https://docs.synapsefi.com/api-references/users/allowed-entity-scopes)
   - [Allow Entity Types](https://docs.synapsefi.com/api-references/users/allowed-entity-types)
-
-[//]: # (- []&#40;&#41;)
+- [Nodes]
+  - [View All User Nodes](https://docs.synapsefi.com/api-references/nodes/view-all-user-nodes)
