@@ -94,3 +94,7 @@ func (c *Client) UpdateNode(ctx context.Context, req *entity.UpdateNodeReq) (*en
 func (c *Client) GenerateECashBarcode(ctx context.Context, req *entity.GenerateECashBarcodeReq) (*entity.GenerateECashBarcodeResp, error) {
 	return c.caller.GenerateECashBarcode(ctx, req)
 }
+
+func (c *Client) AllowedNodeTypes(ctx context.Context) (*entity.AllowedNodeTypesResp, error) {
+	return c.caller.AllowedNodeTypes(ctx)
+}

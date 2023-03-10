@@ -164,3 +164,27 @@ func (c *Client) GenerateECashBarcode(ctx context.Context, req *entity.GenerateE
 
 	return &content, nil
 }
+
+func (c *Client) AllowedNodeTypes(ctx context.Context) (*entity.AllowedNodeTypesResp, error) {
+	url := "/v3.1/nodes/types"
+
+	var (
+		content    entity.AllowedNodeTypesResp
+		contentErr entity.ErrResp
+	)
+
+	_, err := c.client.R().
+		SetContext(ctx).
+		SetResult(&content).
+		SetError(&contentErr).
+		Get(url)
+	if err != nil {
+		return nil, err
+	}
+
+	if contentErr.Valid() {
+		return nil, contentErr
+	}
+
+	return &content, nil
+}

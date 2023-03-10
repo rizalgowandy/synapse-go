@@ -41,6 +41,7 @@ type NodesClientItf interface {
 	CreateNode(ctx context.Context, req *entity.CreateNodeReq) (*entity.CreateNodeResp, error)
 	UpdateNode(ctx context.Context, req *entity.UpdateNodeReq) (*entity.UpdateNodeResp, error)
 	GenerateECashBarcode(ctx context.Context, req *entity.GenerateECashBarcodeReq) (*entity.GenerateECashBarcodeResp, error)
+	AllowedNodeTypes(ctx context.Context) (*entity.AllowedNodeTypesResp, error)
 }
 
 type SubnetsClientItf interface {

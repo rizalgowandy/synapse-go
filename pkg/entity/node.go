@@ -287,3 +287,9 @@ type GenerateECashBarcodeResp struct {
 	Barcode       string `json:"barcode"`
 	BarcodeBase64 string `json:"barcode_base64"`
 }
+
+type AllowedNodeTypesResp struct {
+	Types []struct {
+		Type string `json:"type"`
+	} `json:"types"`
+}
