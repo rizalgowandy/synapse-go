@@ -78,3 +78,7 @@ func (c *Client) AllowedEntityTypes(ctx context.Context) (*entity.AllowedEntityT
 func (c *Client) ViewAllUserNodes(ctx context.Context, req *entity.ViewAllUserNodesReq) (*entity.ViewAllUserNodesResp, error) {
 	return c.caller.ViewAllUserNodes(ctx, req)
 }
+
+func (c *Client) ViewNode(ctx context.Context, req *entity.ViewNodeReq) (*entity.ViewNodeResp, error) {
+	return c.caller.ViewNode(ctx, req)
+}

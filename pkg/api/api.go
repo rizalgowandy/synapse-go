@@ -37,6 +37,7 @@ type UsersClientItf interface {
 
 type NodesClientItf interface {
 	ViewAllUserNodes(ctx context.Context, req *entity.ViewAllUserNodesReq) (*entity.ViewAllUserNodesResp, error)
+	ViewNode(ctx context.Context, req *entity.ViewNodeReq) (*entity.ViewNodeResp, error)
 }
 
 type SubnetsClientItf interface {
