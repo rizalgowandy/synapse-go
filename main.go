@@ -90,3 +90,7 @@ func (c *Client) CreateNode(ctx context.Context, req *entity.CreateNodeReq) (*en
 func (c *Client) UpdateNode(ctx context.Context, req *entity.UpdateNodeReq) (*entity.UpdateNodeResp, error) {
 	return c.caller.UpdateNode(ctx, req)
 }
+
+func (c *Client) GenerateECashBarcode(ctx context.Context, req *entity.GenerateECashBarcodeReq) (*entity.GenerateECashBarcodeResp, error) {
+	return c.caller.GenerateECashBarcode(ctx, req)
+}

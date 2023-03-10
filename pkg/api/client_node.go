@@ -80,9 +80,11 @@ func (c *Client) CreateNode(ctx context.Context, req *entity.CreateNodeReq) (*en
 
 	_, err := c.client.R().
 		SetContext(ctx).
+		SetPathParam("user_id", req.UserID).
 		SetHeaders(c.UserIPHeader(req.UserIPAddress)).
 		SetHeaders(c.UserHeader(req.UserOAuthKey, req.UserID)).
 		SetHeader("Content-Type", "application/json").
+		SetBody(req).
 		SetResult(&content).
 		SetError(&contentErr).
 		Post(url)
@@ -116,9 +118,42 @@ func (c *Client) UpdateNode(ctx context.Context, req *entity.UpdateNodeReq) (*en
 		SetHeaders(c.UserIPHeader(req.UserIPAddress)).
 		SetHeaders(c.UserHeader(req.UserOAuthKey, req.UserID)).
 		SetHeader("Content-Type", "application/json").
+		SetBody(req).
 		SetResult(&content).
 		SetError(&contentErr).
 		Patch(url)
+	if err != nil {
+		return nil, err
+	}
+
+	if contentErr.Valid() {
+		return nil, contentErr
+	}
+
+	return &content, nil
+}
+
+func (c *Client) GenerateECashBarcode(ctx context.Context, req *entity.GenerateECashBarcodeReq) (*entity.GenerateECashBarcodeResp, error) {
+	url := "/v3.1/users/{user_id}/nodes/{node_id}/barcode"
+
+	var (
+		content    entity.GenerateECashBarcodeResp
+		contentErr entity.ErrResp
+	)
+
+	_, err := c.client.R().
+		SetContext(ctx).
+		SetPathParams(map[string]string{
+			"user_id": req.UserID,
+			"node_id": req.NodeID,
+		}).
+		SetHeaders(c.UserIPHeader(req.UserIPAddress)).
+		SetHeaders(c.UserHeader(req.UserOAuthKey, req.UserID)).
+		SetHeader("Content-Type", "application/json").
+		SetBody(req).
+		SetResult(&content).
+		SetError(&contentErr).
+		Post(url)
 	if err != nil {
 		return nil, err
 	}

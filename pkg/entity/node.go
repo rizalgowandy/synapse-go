@@ -269,3 +269,21 @@ type UpdateNodeResp struct {
 	PageCount int  `json:"page_count"`
 	Success   bool `json:"success"`
 }
+
+type GenerateECashBarcodeReq struct {
+	UserID        string `json:"-"`
+	UserIPAddress string `json:"-"`
+	UserOAuthKey  string `json:"-"`
+	NodeID        string `json:"-"`
+	Amount        struct {
+		Amount   int    `json:"amount"`
+		Currency string `json:"currency"`
+	} `json:"amount"`
+	RetailerID int `json:"retailer_id"`
+}
+
+type GenerateECashBarcodeResp struct {
+	ID            string `json:"_id"`
+	Barcode       string `json:"barcode"`
+	BarcodeBase64 string `json:"barcode_base64"`
+}

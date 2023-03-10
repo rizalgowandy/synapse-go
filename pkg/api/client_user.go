@@ -78,6 +78,7 @@ func (c *Client) CreateUser(ctx context.Context, req *entity.CreateUserReq) (*en
 		SetHeaders(c.UserIPHeader(req.UserIPAddress)).
 		SetHeaders(c.UserHeader("", req.UserID)).
 		SetHeader("Content-Type", "application/json").
+		SetBody(req).
 		SetResult(&content).
 		SetError(&contentErr).
 		Post(url)
@@ -106,6 +107,7 @@ func (c *Client) UpdateUser(ctx context.Context, req *entity.UpdateUserReq) (*en
 		SetHeaders(c.UserIPHeader(req.UserIPAddress)).
 		SetHeaders(c.UserHeader(req.UserOAuthKey, req.UserID)).
 		SetHeader("Content-Type", "application/json").
+		SetBody(req).
 		SetResult(&content).
 		SetError(&contentErr).
 		Patch(url)
@@ -134,6 +136,7 @@ func (c *Client) GenerateUBODoc(ctx context.Context, req *entity.GenerateUBODocR
 		SetHeaders(c.UserIPHeader(req.UserIPAddress)).
 		SetHeaders(c.UserHeader(req.UserOAuthKey, req.UserID)).
 		SetHeader("Content-Type", "application/json").
+		SetBody(req).
 		SetResult(&content).
 		SetError(&contentErr).
 		Patch(url)
@@ -189,6 +192,7 @@ func (c *Client) SwapDuplicateUsers(ctx context.Context, req *entity.SwapDuplica
 		SetHeaders(c.UserIPHeader(req.UserIPAddress)).
 		SetHeaders(c.UserHeader(req.UserOAuthKey, req.UserID)).
 		SetHeader("Content-Type", "application/json").
+		SetBody(req).
 		SetResult(&content).
 		SetError(&contentErr).
 		Patch(url)
