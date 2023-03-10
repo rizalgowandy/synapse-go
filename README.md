@@ -111,5 +111,9 @@ Version: 2023-03-08
   - [Allowed Node Types](https://docs.synapsefi.com/api-references/nodes/allowed-node-types)
   - [View ATMs](https://docs.synapsefi.com/api-references/nodes/view-atms)
   - [View Crypto Quotes](https://docs.synapsefi.com/api-references/nodes/view-crypto-quotes)
-
-[//]: # (- []&#40;&#41;)
+- [Subnets](https://docs.synapsefi.com/api-references/subnets)
+  - [](https://docs.synapsefi.com/api-references/subnets/view-all-node-subnets)
+  - [](https://docs.synapsefi.com/api-references/subnets/view-subnet)
+  - [](https://docs.synapsefi.com/api-references/subnets/create-subnet)
+  - [](https://docs.synapsefi.com/api-references/subnets/update-subnet)
+  - [](https://docs.synapsefi.com/api-references/subnets/push-to-wallet)
