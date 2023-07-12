@@ -69,3 +69,35 @@ func (c *Client) ViewSubnet(ctx context.Context, req *entity.ViewSubnetReq) (*en
 
 	return &content, nil
 }
+
+func (c *Client) CreateSubnet(ctx context.Context, req *entity.CreateSubnetReq) (*entity.CreateSubnetResp, error) {
+	url := "/v3.1/users/{user_id}/nodes/{node_id}/subnets"
+
+	var (
+		content    entity.CreateSubnetResp
+		contentErr entity.ErrResp
+	)
+
+	_, err := c.client.R().
+		SetContext(ctx).
+		SetPathParams(map[string]string{
+			"user_id": req.UserID,
+			"node_id": req.NodeID,
+		}).
+		SetHeaders(c.UserIPHeader(req.UserIPAddress)).
+		SetHeaders(c.UserHeader(req.UserOAuthKey, req.UserID)).
+		SetHeader("Content-Type", "application/json").
+		SetBody(req).
+		SetResult(&content).
+		SetError(&contentErr).
+		Post(url)
+	if err != nil {
+		return nil, err
+	}
+
+	if contentErr.Valid() {
+		return nil, contentErr
+	}
+
+	return &content, nil
+}
