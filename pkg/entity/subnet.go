@@ -43,3 +43,20 @@ type CreateSubnetReq struct {
 }
 
 type CreateSubnetResp Subnet
+
+type UpdateSubnetReq struct {
+	UserID        string `json:"-"`
+	UserIPAddress string `json:"-"`
+	UserOAuthKey  string `json:"-"`
+	NodeID        string `json:"-"`
+	SubnetID      string `json:"-"`
+	Status        string `json:"status"`
+	Pin           string `json:"pin"`
+	Preferences   struct {
+		AllowForeignTransactions bool `json:"allow_foreign_transactions"`
+		DailyTransactionLimit    int  `json:"daily_transaction_limit"`
+		DailyCashLimit           int  `json:"daily_cash_limit"`
+	} `json:"preferences"`
+}
+
+type UpdateSubnetResp Subnet
