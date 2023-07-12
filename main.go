@@ -102,3 +102,7 @@ func (c *Client) AllowedNodeTypes(ctx context.Context) (*entity.AllowedNodeTypes
 func (c *Client) ViewATMs(ctx context.Context) (*entity.ViewATMsResp, error) {
 	return c.caller.ViewATMs(ctx)
 }
+
+func (c *Client) ViewAllNodeSubnets(ctx context.Context, req *entity.ViewAllNodeSubnetsReq) (*entity.ViewAllNodeSubnetsResp, error) {
+	return c.caller.ViewAllNodeSubnets(ctx, req)
+}
