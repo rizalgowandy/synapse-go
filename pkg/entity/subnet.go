@@ -60,3 +60,25 @@ type UpdateSubnetReq struct {
 }
 
 type UpdateSubnetResp Subnet
+
+type PushToWalletReq struct {
+	UserID         string   `json:"-"`
+	UserIPAddress  string   `json:"-"`
+	UserOAuthKey   string   `json:"-"`
+	NodeID         string   `json:"-"`
+	SubnetID       string   `json:"-"`
+	Type           string   `json:"type"`
+	Nonce          string   `json:"nonce"`
+	NonceSignature string   `json:"nonce_signature"`
+	Certificates   []string `json:"certificates"`
+}
+
+type PushToWalletResp struct {
+	Data struct {
+		Authentication struct {
+			ActivationData string `json:"activation_data"`
+			EncryptedData  string `json:"encrypted_data"`
+			PublicKey      string `json:"public_key"`
+		} `json:"authentication"`
+	} `json:"data"`
+}

@@ -112,7 +112,11 @@ func (c *Client) UpdateSubnet(ctx context.Context, req *entity.UpdateSubnetReq) 
 
 	_, err := c.client.R().
 		SetContext(ctx).
-		SetPathParam("user_id", req.UserID).
+		SetPathParams(map[string]string{
+			"user_id":   req.UserID,
+			"node_id":   req.NodeID,
+			"subnet_id": req.SubnetID,
+		}).
 		SetHeaders(c.UserIPHeader(req.UserIPAddress)).
 		SetHeaders(c.UserHeader(req.UserOAuthKey, req.UserID)).
 		SetHeader("Content-Type", "application/json").
@@ -120,6 +124,39 @@ func (c *Client) UpdateSubnet(ctx context.Context, req *entity.UpdateSubnetReq) 
 		SetResult(&content).
 		SetError(&contentErr).
 		Patch(url)
+	if err != nil {
+		return nil, err
+	}
+
+	if contentErr.Valid() {
+		return nil, contentErr
+	}
+
+	return &content, nil
+}
+
+func (c *Client) PushToWallet(ctx context.Context, req *entity.PushToWalletReq) (*entity.PushToWalletResp, error) {
+	url := "/v3.1/users/{user_id}/nodes/{node_id}/subnets/{subnet_id}/push"
+
+	var (
+		content    entity.PushToWalletResp
+		contentErr entity.ErrResp
+	)
+
+	_, err := c.client.R().
+		SetContext(ctx).
+		SetPathParams(map[string]string{
+			"user_id":   req.UserID,
+			"node_id":   req.NodeID,
+			"subnet_id": req.SubnetID,
+		}).
+		SetHeaders(c.UserIPHeader(req.UserIPAddress)).
+		SetHeaders(c.UserHeader(req.UserOAuthKey, req.UserID)).
+		SetHeader("Content-Type", "application/json").
+		SetBody(req).
+		SetResult(&content).
+		SetError(&contentErr).
+		Post(url)
 	if err != nil {
 		return nil, err
 	}

@@ -50,6 +50,7 @@ type SubnetsClientItf interface {
 	ViewSubnet(ctx context.Context, req *entity.ViewSubnetReq) (*entity.ViewSubnetResp, error)
 	CreateSubnet(ctx context.Context, req *entity.CreateSubnetReq) (*entity.CreateSubnetResp, error)
 	UpdateSubnet(ctx context.Context, req *entity.UpdateSubnetReq) (*entity.UpdateSubnetResp, error)
+	PushToWallet(ctx context.Context, req *entity.PushToWalletReq) (*entity.PushToWalletResp, error)
 }
 
 type ShipmentsClientItf interface {
