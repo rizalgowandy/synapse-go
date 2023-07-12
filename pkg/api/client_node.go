@@ -188,3 +188,27 @@ func (c *Client) AllowedNodeTypes(ctx context.Context) (*entity.AllowedNodeTypes
 
 	return &content, nil
 }
+
+func (c *Client) ViewATMs(ctx context.Context) (*entity.ViewATMsResp, error) {
+	url := "/v3.1/nodes/atms"
+
+	var (
+		content    entity.ViewATMsResp
+		contentErr entity.ErrResp
+	)
+
+	_, err := c.client.R().
+		SetContext(ctx).
+		SetResult(&content).
+		SetError(&contentErr).
+		Get(url)
+	if err != nil {
+		return nil, err
+	}
+
+	if contentErr.Valid() {
+		return nil, contentErr
+	}
+
+	return &content, nil
+}
