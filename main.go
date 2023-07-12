@@ -106,3 +106,7 @@ func (c *Client) ViewATMs(ctx context.Context) (*entity.ViewATMsResp, error) {
 func (c *Client) ViewAllNodeSubnets(ctx context.Context, req *entity.ViewAllNodeSubnetsReq) (*entity.ViewAllNodeSubnetsResp, error) {
 	return c.caller.ViewAllNodeSubnets(ctx, req)
 }
+
+func (c *Client) ViewSubnet(ctx context.Context, req *entity.ViewSubnetReq) (*entity.ViewSubnetResp, error) {
+	return c.caller.ViewSubnet(ctx, req)
+}
