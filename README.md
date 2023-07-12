@@ -110,7 +110,6 @@ Version: 2023-03-08
   - [Generate ECash Barcode](https://docs.synapsefi.com/api-references/nodes/generate-ecash-barcode)
   - [Allowed Node Types](https://docs.synapsefi.com/api-references/nodes/allowed-node-types)
   - [View ATMs](https://docs.synapsefi.com/api-references/nodes/view-atms)
-  - [View Crypto Quotes](https://docs.synapsefi.com/api-references/nodes/view-crypto-quotes)
 - [Subnets](https://docs.synapsefi.com/api-references/subnets)
   - [View All Node Subnets](https://docs.synapsefi.com/api-references/subnets/view-all-node-subnets)
   - [View Subnet](https://docs.synapsefi.com/api-references/subnets/view-subnet)
