@@ -224,7 +224,7 @@ type GenerateUBODocResp struct {
 			LastUpdated  int64  `json:"last_updated"`
 			Status       string `json:"status"`
 		} `json:"virtual_docs"`
-		Watchlists string `json:"watchlists"`
+		WatchLists string `json:"watchlists"`
 	} `json:"documents"`
 	Emails []any `json:"emails"`
 	Extra  struct {
@@ -246,11 +246,11 @@ type GenerateUBODocResp struct {
 		Scope string `json:"scope"`
 	} `json:"logins"`
 	Permission     string   `json:"permission"`
-	PermissionCode any      `json:"permission_code"`
+	PermissionCode string   `json:"permission_code"`
 	PhoneNumbers   []string `json:"phone_numbers"`
 	Photos         []any    `json:"photos"`
 	RefreshToken   string   `json:"refresh_token"`
-	Watchlists     string   `json:"watchlists"`
+	WatchLists     string   `json:"watchlists"`
 }
 
 type GetDuplicatesReq struct {

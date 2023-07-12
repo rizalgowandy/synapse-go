@@ -1,5 +1,7 @@
 package entity
 
+import "github.com/rizalgowandy/synapse-go/pkg/enum"
+
 // Reference: https://docs.synapsefi.com/api-references/users/user-object-details
 
 type User struct {
@@ -140,10 +142,10 @@ type User struct {
 			Date int64 `json:"$date"`
 		} `json:"updated_on"`
 	} `json:"logins"`
-	Permission     string   `json:"permission"`
-	PermissionCode any      `json:"permission_code"`
-	PhoneNumbers   []string `json:"phone_numbers"`
-	Photos         []any    `json:"photos"`
-	RefreshToken   string   `json:"refresh_token"`
-	Watchlists     string   `json:"watchlists"`
+	Permission     enum.UserPermission `json:"permission"`
+	PermissionCode string              `json:"permission_code"`
+	PhoneNumbers   []string            `json:"phone_numbers"`
+	Photos         []any               `json:"photos"`
+	RefreshToken   string              `json:"refresh_token"`
+	WatchLists     string              `json:"watchlists"`
 }
