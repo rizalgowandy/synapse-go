@@ -116,3 +116,8 @@ Version: 2023-03-08
   - [Create Subnet](https://docs.synapsefi.com/api-references/subnets/create-subnet)
   - [Update Subnet](https://docs.synapsefi.com/api-references/subnets/update-subnet)
   - [Push to Wallet](https://docs.synapsefi.com/api-references/subnets/push-to-wallet)
+- [Shipments](https://docs.synapsefi.com/api-references/shipments)
+  - [View All Subnet Shipments](https://docs.synapsefi.com/api-references/shipments/view-all-subnet-shipments)
+  - [View Shipment](https://docs.synapsefi.com/api-references/shipments/view-shipment)
+  - [Create Shipment](https://docs.synapsefi.com/api-references/shipments/create-shipment)
+  - [Cancel Shipment](https://docs.synapsefi.com/api-references/shipments/cancel-shipment)
